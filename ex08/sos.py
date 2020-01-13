@@ -44,9 +44,6 @@ if len(sys.argv) < 2:
     sys.exit()
 s = " ".join(sys.argv[1:]).lower()
 
-#print (s)
-#print([dict_morse[c]  for c in s])
-
 try:
     print(" ".join([dict_morse[c]  for c in s]))
 except KeyError:
