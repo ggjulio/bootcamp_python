@@ -43,8 +43,3 @@ do_product(x, y)
 do_quotient(x, y)
 do_reminder(x, y)
 
-# ZeroDivisionError
-# NameError
-# TypeError
-
-#except TypeError:
