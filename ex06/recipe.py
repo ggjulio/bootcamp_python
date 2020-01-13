@@ -25,13 +25,16 @@ cookbook = {
 
 #def print_cookbook():
     
-n = input("Please select an option by typing the corresponding number:\n1: Add a recipe\n2: Delete a recipe\n3: Print a recipe\n4: Print the cookbook\n5: Quit\n>> ")
-while 1:
+try:
+	n = int(input("Please select an option by typing the corresponding number:\n1: Add a recipe\n2: Delete a recipe\n3: Print a recipe\n4: Print the cookbook\n5: Quit\n>> "))
+except ValueError:	
+	pass
+while n != 5:
 	try:
-		n = int(n);
+		
 	except ValueError:
-		continue
-	if n < 0 and n > 5:
-		n = input("This option does not exist, please type the corresponding number.\nTo exit, enter 5.\n>> ")
+		n = int(input("This option does not exist, please type the corresponding number.\nTo exit, enter 5.\n>> "))
+		pass
+	
 
 
