@@ -1,9 +1,10 @@
 import sys
+import string
 
 try:
-    av = sys.argv[1].split(' ')
+    str = "".join(c for c in sys.argv[1] if c not in string.punctuation).split()
     n = int(sys.argv[2])
 except ValueError:
     sys.exit("ERROR")
 
-print ([w for w in av if len(w) > n])
+print ([word for word in str if len(word) > n])
