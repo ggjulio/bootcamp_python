@@ -6,7 +6,7 @@ class Recipe:
 		self.name = name
 		self.cooking_lvl = cooking_lvl
 		self.cooking_time = cooking_time
-		self.ingredients: dict = ingredients
+		self.ingredients = ingredients
 		self.description = description
 		self.recipe_type = recipe_type
 
