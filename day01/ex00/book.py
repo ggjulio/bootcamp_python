@@ -37,6 +37,8 @@ class Book:
 		"""Add a recipe to the book and update last_update"""
 		if type(recipe)is not Recipe:
 			raise TypeError("This is NOT a recipe !")
+		if recipe.name in [r.name for r in self.recipe_dict[recipe.recipe_type]]:
+			raise ValueError(f"NO ! Recipe {recipe.name} already exist !")
 		self.recipe_dict[recipe.recipe_type].append(recipe)
 		self.last_update = dt.datetime.now()
 
