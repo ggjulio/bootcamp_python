@@ -71,3 +71,8 @@ class Recipe:
 			f"Recipe type : {self.recipe_type}\n"
 		)
 
+	def __repr__(self):
+		return ("Recipe({}, {}, {}, {}, {}, {})".format(
+			self.name, self.cooking_lvl, self.cooking_time, self.ingredients, self.description,	self.recipe_type
+		)
+		)
