@@ -2,7 +2,7 @@ import operator
 
 class Recipe:
 
-	def __init__(self, name: str, cooking_lvl: int, cooking_time: int, ingredients: dict, description: str, recipe_type: str):
+	def __init__(self, name: str, cooking_lvl: int, cooking_time: int, ingredients: list, description: str, recipe_type: str):
 		self.name = name
 		self.cooking_lvl = cooking_lvl
 		self.cooking_time = cooking_time
@@ -40,8 +40,8 @@ class Recipe:
 			raise TypeError("Ingredients should be a list of str !!")
 		if len(v) < 1:
 			raise ValueError("At least one ingredient...")
-		if not len([i for i in v if i]):
-			raise ValueError("At least one ingredient not null...Moron !")
+		if len([i for i in v if not i]):
+			raise ValueError("No null ingredients... Moron !")
 		self._ingredients = v
 
 	description = property(operator.attrgetter("_description"))
