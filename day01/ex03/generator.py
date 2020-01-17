@@ -10,10 +10,8 @@ def generator(text, sep=" ", option=None):
 	elif option == "unique":
 		lst = list(set(lst))
 	elif option == "ordered":
-		lst.sort()
+		lst.sort(key=str.swapcase)
 	elif option:
-		print("shit")
 		raise ValueError("Option can be : 'shuffle', 'unique', 'ordered'")
 
-	for w in lst:
-		yield w
+	[(yield w) for w in lst]
