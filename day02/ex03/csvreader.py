@@ -7,18 +7,29 @@ class CsvReader():
 		self.header = header
 		self.skip_top = skip_top
 		self.skip_bottom = skip_bottom
-		self.file_obj = open(self.filename, "r")
+		self.data_header = None
+		self.data = []
+		self.file_obj = None
 
 	def __enter__(self):
-		return (self.file_obj)
+		try:
+			self.file_obj = open(self.filename, "r")
+			csv_reader = csv.reader(self.file_obj, delimiter=self.sep)
+			if not self.header: 
+				self.data_header = next(csv_reader)
+			for l in csv_reader:
+				self.data.append(l)
+			if not self.header and all([ len(l) == len(self.data_header) for l in self.data]):
+				return (self)
+		except FileNotFoundError:
+			pass	
+		return (None)
 
 	def getdata(self):
-		data = csv.reader(self.file_obj, delimiter=self.sep, has_header=self.header)
-		data = data[self.skip_top: data.count('\n') - self.skip_bottom]
-		return (data)
+		return (self.data)
 
 	def getheader(self):
-		pass
+		return(self.data_header)
 
 	def __exit__(self, type, value, traceback):
 		if self.file_obj:
