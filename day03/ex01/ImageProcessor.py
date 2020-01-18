@@ -11,5 +11,3 @@ class ImageProcessor:
 		img_plt = plt.imshow(array)
 		plt.show()
 		return (img_plt)
-		
-		
